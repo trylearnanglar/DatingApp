@@ -1,8 +1,8 @@
-using System.Runtime.InteropServices;
-using System;
-using System.Threading.Tasks;
+
+
 using DatingApp.API.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DatingApp.API.Data {
     public class AuthRepository : IAuthRepository {
@@ -10,7 +10,8 @@ namespace DatingApp.API.Data {
         public AuthRepository (DataContext context) {
             _context = context;
         }
-        public async Task<User> Login (string username, string password) {
+        public async Task<User> Login(string username, string password) {
+
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
 
             if(user == null)
