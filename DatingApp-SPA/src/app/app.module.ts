@@ -7,6 +7,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GalleryModule, GalleryConfig } from 'ng-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 import { AppComponent } from './app.component';
 import { HttpClient } from 'selenium-webdriver/http';
@@ -34,6 +35,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 
+
 export const config: GalleryConfig = {
  };
 
@@ -49,7 +51,8 @@ export const config: GalleryConfig = {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      DateAgoPipe
    ],
    imports: [
       BrowserModule,

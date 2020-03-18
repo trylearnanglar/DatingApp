@@ -7,8 +7,11 @@ using DatingApp.API.Dtos;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System;
+using DatingApp.API.Healpers;
 
 namespace DatingApp.API.Controllers {
+
+    [ServiceFilter(typeof(LogUserActivity))]
     [Route ("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase {
