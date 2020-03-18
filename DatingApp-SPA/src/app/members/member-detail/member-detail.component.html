@@ -1,11 +1,11 @@
 <div class="container mt-4">
   <div class="row">
-    <h1>{{user.username | titlecase}}'s Profile</h1>
+    <h1>{{user.knownAs}}'s Profile</h1>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img src="{{user.photoUrl}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
+        <img src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.knownAs}}" class="card-img-top img-thumbnail">
         <div class="card-body">
           <div>
               <strong>Location:</strong>
@@ -35,7 +35,7 @@
     <div class="col-sm-8">
       <div class="tab-panel">
           <ngb-tabset class="member-tabset">
-              <ngb-tab title="About {{user?.username | titlecase}}">
+              <ngb-tab title="About {{user?.knownAs}}">
                   <ng-template ngbTabContent>
                       <h4>Description</h4>
                       <p>{{user.introduction}}</p>

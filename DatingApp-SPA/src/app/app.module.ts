@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgbModule, NgbCalendar, NgbCalendarHebrew, NgbDatepickerI18n, NgbDatepickerI18nHebrew} from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GalleryModule, GalleryConfig } from 'ng-gallery';
@@ -55,6 +55,7 @@ export const config: GalleryConfig = {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       NgbModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
@@ -80,7 +81,9 @@ export const config: GalleryConfig = {
          provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,
          multi: true
-      }
+      },
+      {provide: NgbCalendar, useClass: NgbCalendarHebrew},
+      {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
    ],
    bootstrap: [
       AppComponent
