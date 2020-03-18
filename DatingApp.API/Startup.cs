@@ -40,8 +40,22 @@ namespace DatingApp.API
             services.AddControllers().AddNewtonsoftJson(opt => {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
-            services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MainPolicy",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                    });
+
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
+            services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository,AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -86,7 +100,7 @@ namespace DatingApp.API
 
             app.UseAuthorization();
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("MainPolicy");
 
             app.UseEndpoints(endpoints =>
             {
