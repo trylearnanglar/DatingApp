@@ -33,6 +33,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { ListResolver } from './_resolvers/list.resolver';
 
 
 
@@ -80,6 +81,7 @@ export const config: GalleryConfig = {
       MemberListResolver,
       MemberEditResolver,
       PreventUnsavedChanges,
+      ListResolver,
       {
          provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,
