@@ -39,6 +39,11 @@ export class ListsComponent implements OnInit {
 
   }
 
+  radioChange(event: any) {
+    this.likesParam = event;
+    this.loadUsers();
+}
+
   pageChanged(page: number): void {
     this.pagination.currentPage = page;
     this.loadUsers();

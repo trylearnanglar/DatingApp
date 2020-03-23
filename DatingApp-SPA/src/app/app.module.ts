@@ -34,6 +34,8 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { ListResolver } from './_resolvers/list.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 
@@ -53,7 +55,8 @@ export const config: GalleryConfig = {
       MemberDetailComponent,
       MemberEditComponent,
       PhotoEditorComponent,
-      DateAgoPipe
+      DateAgoPipe,
+      MemberMessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -82,6 +85,7 @@ export const config: GalleryConfig = {
       MemberEditResolver,
       PreventUnsavedChanges,
       ListResolver,
+      MessagesResolver,
       {
          provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,

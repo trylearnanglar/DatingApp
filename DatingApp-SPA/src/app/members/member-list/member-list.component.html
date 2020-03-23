@@ -31,12 +31,12 @@
         <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">Reset Filter</button>
         <div class="col">
 
-            <div class="btn-group btn-group-toggle" (click)="loadUsers()" ngbRadioGroup name="orderBy" [(ngModel)]="userParams.orderBy">
+            <div class="btn-group btn-group-toggle" ngbRadioGroup name="orderBy" [(ngModel)]="userParams.orderBy">
               <label ngbButtonLabel class="btn-primary">
-                <input ngbButton type="radio" value="lastActive"> Last Active
+                <input ngbButton type="radio" (click)=" radioChange('lastActive')" value="lastActive"> Last Active
               </label>
               <label ngbButtonLabel class="btn-primary">
-                <input ngbButton type="radio" value="created"> Newest Members
+                <input ngbButton type="radio" (click)=" radioChange('created')" value="created"> Newest Members
               </label>
             </div>
 

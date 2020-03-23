@@ -27,15 +27,15 @@
        <div class = "card-footer">
          <div class="btn-group d-flex">
           <button class="btn btn-primary w-100">Like</button>
-          <button class="btn btn-success w-100">Messages</button>
+          <button class="btn btn-success w-100" (click)="switchNgBTab('messages')">Messages</button>
          </div>
        </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-          <ngb-tabset class="member-tabset">
-              <ngb-tab title="About {{user?.knownAs}}">
+          <ngb-tabset class="member-tabset" #ctdTabset="ngbTabset">
+              <ngb-tab id="about" title="About {{user?.knownAs}}">
                   <ng-template ngbTabContent>
                       <h4>Description</h4>
                       <p>{{user.introduction}}</p>
@@ -43,22 +43,22 @@
                       <p>{{user.lookingFor}}</p>
                   </ng-template>
               </ngb-tab>
-              <ngb-tab title="Interests">
+              <ngb-tab id="interests" title="Interests">
                   <ng-template ngbTabContent>
                       <h4>Interests</h4>
                       <p>{{user.interests}}</p>
                   </ng-template>
               </ngb-tab>
-              <ngb-tab title="Photos">
+              <ngb-tab id="photo" title="Photos">
                   <ng-template ngbTabContent>
                     <div class="container">
                         <img *ngFor="let img of images" [src]="img.data.src" style="width: 200px; height: 200px;"  class="img-thumbnail">
                     </div>
                   </ng-template>
               </ngb-tab>
-              <ngb-tab title="Messages">
+              <ngb-tab id="messages" title="Messages">
                   <ng-template ngbTabContent>
-                      <p>Messages will go here</p>
+                      <app-member-messages [recipientId]="user.id"></app-member-messages>
                   </ng-template>
               </ngb-tab>
             </ngb-tabset>

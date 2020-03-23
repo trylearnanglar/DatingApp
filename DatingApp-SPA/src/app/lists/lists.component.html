@@ -1,12 +1,12 @@
 <div class="container mt-3">
 
   <div class="row">
-    <div class="btn-group btn-group-toggle" (click)="loadUsers()" ngbRadioGroup name="likesParam" [(ngModel)]="likesParam">
+    <div class="btn-group btn-group-toggle" ngbRadioGroup name="likesParam" [(ngModel)]="likesParam" >
         <label ngbButtonLabel class="btn-primary">
-          <input ngbButton type="radio" value="Likers"> Members who like me
+          <input ngbButton type="radio" (click)="radioChange('Likers')" value="Likers"> Members who like me
         </label>
         <label ngbButtonLabel class="btn-primary">
-          <input ngbButton type="radio" value="Likees"> Members who I like
+          <input ngbButton type="radio" (click)="radioChange('Likees')" value="Likees"> Members who I like
         </label>
       </div>
   </div>

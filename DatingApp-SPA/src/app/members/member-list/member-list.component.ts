@@ -45,8 +45,12 @@ export class MemberListComponent implements OnInit {
     this.loadUsers();
   }
 
+  radioChange(event: any) {
+    this.userParams.orderBy = event;
+    this.loadUsers();
+}
+
   loadUsers() {
-    console.log(this.userParams.orderBy);
     this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams)
     .subscribe((res: PaginatedResult<User[]>) => {
       this.users = res.result;
