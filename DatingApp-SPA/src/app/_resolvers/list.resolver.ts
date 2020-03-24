@@ -10,7 +10,7 @@ import { catchError } from 'rxjs/operators';
 export class ListResolver implements Resolve<User[]> {
     pageNumber = 1;
     pageSize = 5;
-    likesParam = 'Liker';
+    likesParam = 'Likers';
 
     constructor(private userService: UserService,
                 private router: Router, private alertify: AlertifyService) {}

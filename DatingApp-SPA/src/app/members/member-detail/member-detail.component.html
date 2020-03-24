@@ -26,8 +26,8 @@
        </div>
        <div class = "card-footer">
          <div class="btn-group d-flex">
-          <button class="btn btn-primary w-100">Like</button>
-          <button class="btn btn-success w-100" (click)="switchNgBTab('messages')">Messages</button>
+          <button class="btn btn-primary w-100" (click)="sendLike(user.id)">Like</button>
+          <button id="btnMessages" class="btn btn-success w-100" (click)="switchNgBTab('messages')">Messages</button>
          </div>
        </div>
       </div>

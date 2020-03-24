@@ -22,6 +22,6 @@ export class MemberCardComponent implements OnInit {
       this.alertify.success('You have liked ' + this.user.knownAs);
     }, error => {
       this.alertify.error(error);
-    })
+    });
   }
 }

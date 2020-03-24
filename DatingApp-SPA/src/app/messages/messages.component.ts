@@ -21,13 +21,12 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.messages = data['messages'].result;
-      this.pagination = data['messages'].pagination;
+      this.messages = data.messages.result;
+      this.pagination = data.messages.pagination;
     });
   }
 
   loadMessages() {
-    console.log(this.messageContainer);
     this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage,
       this.pagination.itemsPerPage, this.messageContainer)
       .subscribe((res: PaginatedResult<Message[]>) => {
@@ -51,7 +50,6 @@ export class MessagesComponent implements OnInit {
 
   radioChange(event: any) {
     this.messageContainer = event;
-    console.log(this.messageContainer);
     this.loadMessages();
   }
 

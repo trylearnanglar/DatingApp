@@ -23,13 +23,11 @@ export class MemberMessagesComponent implements OnInit {
   }
 
   loadMessages() {
-    debugger;
     const currentUserId = this.authService.decodedToken.nameid;
     this.userService.getMessageThread(this.authService.decodedToken.nameid, this.recipientId)
     .pipe(
       tap(messages => {
         for (let i = 0; i < messages.length; i++) {
-          console.log(messages[i].isRead + '   ' + messages[i].recipientId);
           if (messages[i].isRead === false && messages[i].recipientId === currentUserId) {
             this.userService.markAsRead(currentUserId, messages[i].id);
           }
