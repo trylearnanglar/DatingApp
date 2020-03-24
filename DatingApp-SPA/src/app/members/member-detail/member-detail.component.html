@@ -34,7 +34,7 @@
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-          <ngb-tabset class="member-tabset" #ctdTabset="ngbTabset">
+          <ngb-tabset class="member-tabset" #ctdTabset="ngbTabset" [activeId]="tabId">
               <ngb-tab id="about" title="About {{user?.knownAs}}">
                   <ng-template ngbTabContent>
                       <h4>Description</h4>
