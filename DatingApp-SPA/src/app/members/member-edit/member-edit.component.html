@@ -3,7 +3,7 @@
       <div class="col-sm-4">
           <h1>Your Profile</h1>
       </div>
-      <div class="col-sm-8">
+      <div *ngIf="checkchange() == true" class="col-sm-8">
         <div class="alert alert-info">
           <strong>Information:</strong> You have made changes. Any unsaved changes will be lost!
         </div>
@@ -33,7 +33,7 @@
          </div>
          <div class = "card-footer">
            <div class="btn-group d-flex">
-              <button form="editForm" class="btn btn-success btn-block">Save Changes</button>
+              <button form="editForm" [disabled]="checkchange() == false" class="btn btn-success btn-block">Save Changes</button>
            </div>
          </div>
         </div>
