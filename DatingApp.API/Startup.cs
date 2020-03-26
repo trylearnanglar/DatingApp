@@ -99,6 +99,10 @@ namespace DatingApp.API
 
             app.UseAuthentication();
 
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles();
+
             app.UseAuthorization();
 
             app.UseCors("MainPolicy");
@@ -106,6 +110,7 @@ namespace DatingApp.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

@@ -67,12 +67,6 @@ export const config: GalleryConfig = {
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       GalleryModule.withConfig(config),
-      JwtModule.forRoot({
-         config: {
-            whitelistedDomains: ['localhost:5000'],
-            blacklistedRoutes: ['localhost:5000/api/auth']
-         }
-      }),
       FileUploadModule
    ],
    providers: [

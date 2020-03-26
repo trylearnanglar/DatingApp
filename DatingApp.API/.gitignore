@@ -4,3 +4,4 @@ obj
 *.db
 *.lock
 appsettings.json
+wwwroot
