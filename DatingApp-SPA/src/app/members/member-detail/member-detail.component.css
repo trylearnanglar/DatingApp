@@ -4,6 +4,12 @@
     height: 85%;
 }
 
+.img-gallery {
+    min-width: 150;
+    height: 150;
+}
+
+
 .card-body {
     padding: 0 25px;
 }

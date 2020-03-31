@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h2>Admin Panel</h2>
+  <div class="tab-panel">
+    <ngb-tabset class="member-tabset" [activeId]="tabId">
+      <ngb-tab id="usermanagement" title="User Management" *appHasRole="['Admin']">
+        <ng-template ngbTabContent>
+          <div class="container">
+            <app-user-management></app-user-management>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="photomanagement" title="Photo Management" *appHasRole="['Moderator']">
+        <ng-template ngbTabContent>
+          <div class="container">
+            <app-photo-management></app-photo-management>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

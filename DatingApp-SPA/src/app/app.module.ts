@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgbModule, NgbCalendar, NgbCalendarHebrew, NgbDatepickerI18n, NgbDatepickerI18nHebrew} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GalleryModule, GalleryConfig } from 'ng-gallery';
@@ -36,41 +36,50 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { ListResolver } from './_resolvers/list.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
-
-
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_derectives/hasRole.directive';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { AdminService } from './_services/admin.service';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 
 export const config: GalleryConfig = {
- };
+};
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      NavComponent,
-      HomeComponent,
-      RegisterComponent,
-      MemberListComponent,
-      ListsComponent,
-      MessagesComponent,
-      MemberCardComponent,
-      MemberDetailComponent,
-      MemberEditComponent,
-      PhotoEditorComponent,
-      DateAgoPipe,
-      MemberMessagesComponent
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      FormsModule,
-      ReactiveFormsModule,
-      NgbModule,
-      RouterModule.forRoot(appRoutes),
-      BrowserAnimationsModule,
-      GalleryModule.withConfig(config),
-      FileUploadModule
-   ],
-   providers: [
-      AuthService,
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    RegisterComponent,
+    MemberListComponent,
+    ListsComponent,
+    MessagesComponent,
+    MemberCardComponent,
+    MemberDetailComponent,
+    MemberEditComponent,
+    PhotoEditorComponent,
+    DateAgoPipe,
+    MemberMessagesComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    PhotoManagementComponent,
+    UserManagementComponent,
+    RolesModalComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    GalleryModule.withConfig(config),
+    FileUploadModule
+  ],
+  providers: [
+    AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
       UserService,
@@ -85,11 +94,8 @@ export const config: GalleryConfig = {
          useClass: TokenInterceptor,
          multi: true
       },
-      {provide: NgbCalendar, useClass: NgbCalendarHebrew},
-      {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+      AdminService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

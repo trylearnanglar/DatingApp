@@ -24,8 +24,10 @@
     <table class="table table-hover" style="cursor: pointer">
       <tr>
         <th style="width: 40%">Message</th>
-        <th style="width: 20%">From / To</th>
-        <th style="width: 20%">Sent / Received</th>
+        <th style="width: 20%" *ngIf="messageContainer != 'Outbox'">From</th> 
+        <th style="width: 20%" *ngIf="messageContainer == 'Outbox'">To</th>
+        <th style="width: 20%" *ngIf="messageContainer != 'Outbox'">Received</th> 
+        <th style="width: 20%" *ngIf="messageContainer == 'Outbox'">Sent</th>
         <th style="width: 20%"></th>
       </tr>
       <tr *ngFor="let message of messages" [routerLink]="['/members', 
@@ -43,7 +45,10 @@
         </td>
         <td>{{message.messageSent | dateAgo}}</td>
         <td>
-          <button class="btn btn-danger" (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)">Delete</button>
+          <button class="btn btn-danger" *ngIf="messageContainer == 'Outbox'"
+            (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)">Delete</button>
+          <button class="btn btn-danger" *ngIf="messageContainer != 'Outbox'"
+            (click)="$event.stopPropagation()" (click)="deleteMessageReceived(message.id)">Delete</button>
         </td>
       </tr>
     </table>

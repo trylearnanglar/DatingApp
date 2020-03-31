@@ -47,6 +47,16 @@ export class MessagesComponent implements OnInit {
       });
     });
   }
+  deleteMessageReceived(id: number) {
+    this.alertify.confirm('Are you sure you went to delete this message', () => {
+      this.userService.deleteMessagesReceived(id, this.authService.decodedToken.nameid).subscribe(() => {
+        this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
+        this.alertify.success('Message have been deleted');
+      }, error => {
+        this.alertify.error(error);
+      });
+    });
+  }
 
   radioChange(event: any) {
     this.messageContainer = event;

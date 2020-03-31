@@ -52,7 +52,7 @@
               <ngb-tab id="photo" title="Photos">
                   <ng-template ngbTabContent>
                     <div class="container">
-                        <img *ngFor="let img of images" [src]="img.data.src" style="width: 200px; height: 200px;"  class="img-thumbnail">
+                      <gallery gallerize [items]="images" style="background-color: #ffffff;"></gallery>
                     </div>
                   </ng-template>
               </ngb-tab>
