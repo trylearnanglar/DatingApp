@@ -34,6 +34,10 @@ export class MemberEditComponent implements OnInit {
               private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.route.data.subscribe(data => {
       this.user = data.user;
     });
@@ -52,6 +56,7 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+    this.load();
   }
 
   checkchange(): boolean {

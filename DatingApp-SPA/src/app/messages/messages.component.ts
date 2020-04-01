@@ -38,7 +38,7 @@ export class MessagesComponent implements OnInit {
   }
 
   deleteMessage(id: number) {
-    this.alertify.confirm('Are you sure you went to delete this message', () => {
+    this.alertify.confirm('Are you sure you want to delete this message', () => {
       this.userService.deleteMessages(id, this.authService.decodedToken.nameid).subscribe(() => {
         this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
         this.alertify.success('Message have been deleted');
@@ -47,8 +47,20 @@ export class MessagesComponent implements OnInit {
       });
     });
   }
+
+  revokeMessage(id: number) {
+    this.alertify.confirm('Are you sure you want to revoke this message', () => {
+      this.userService.revokeMessages(id, this.authService.decodedToken.nameid).subscribe(() => {
+        this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
+        this.alertify.success('Message have been revoke');
+      }, error => {
+        this.alertify.error(error);
+      });
+    });
+  }
+
   deleteMessageReceived(id: number) {
-    this.alertify.confirm('Are you sure you went to delete this message', () => {
+    this.alertify.confirm('Are you sure you want to delete this message', () => {
       this.userService.deleteMessagesReceived(id, this.authService.decodedToken.nameid).subscribe(() => {
         this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
         this.alertify.success('Message have been deleted');

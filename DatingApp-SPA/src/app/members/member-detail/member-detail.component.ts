@@ -29,24 +29,10 @@ export class MemberDetailComponent implements OnInit {
       this.user = data.user;
     });
 
-    this.imageData = this.getImages();
-    this.images = this.imageData.map(img => new ImageItem({ src: img.src, thumb: img.thumb }));
-
     this.route.queryParams.subscribe(params => {
       this.selectedTabs = params.tab;
       this.tabId = params.tab;
     });
-  }
-
-  getImages() {
-    const imagesUrls = [];
-    for (const photo of this.user.photos) {
-      imagesUrls.push({
-        src: photo.url,
-        thumb: photo.url
-      });
-    }
-    return imagesUrls;
   }
 
   sendLike(id: number) {

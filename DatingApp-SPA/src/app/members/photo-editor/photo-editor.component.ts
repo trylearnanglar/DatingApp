@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-photo-editor',
@@ -67,9 +68,13 @@ export class PhotoEditorComponent implements OnInit {
       this.currentMain.isMain = false;
       photo.isMain = true;
       this.authService.changeMemberPhoto(photo.url);
+      const user: User = JSON.parse(localStorage.getItem('user')) ;
+      user.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(user));
     }, error => {
       this.alertify.error(error);
     });
+    this.initializeUploader();
   }
 
   deletePhoto(id: number) {
@@ -81,5 +86,10 @@ export class PhotoEditorComponent implements OnInit {
         this.alertify.error('Failed to delete the photo');
       });
     });
+  }
+
+  callall() {
+    this.uploader.uploadAll();
+    this.initializeUploader();
   }
 }

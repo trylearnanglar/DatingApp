@@ -52,7 +52,7 @@
               <ngb-tab id="photo" title="Photos">
                   <ng-template ngbTabContent>
                     <div class="container">
-                      <gallery gallerize [items]="images" style="background-color: #ffffff;"></gallery>
+                      <app-image-lightbox [user]="user"></app-image-lightbox>
                     </div>
                   </ng-template>
               </ngb-tab>

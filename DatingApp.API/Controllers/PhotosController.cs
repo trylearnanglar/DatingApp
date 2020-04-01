@@ -85,6 +85,15 @@ namespace DatingApp.API.Controllers
             if (!userFromRepo.Photos.Any(u => u.IsMain))
                 photo.IsMain = true;
 
+            foreach (var role in userFromRepo.UserRoles)
+            {
+                if (role.Role.Name == "Admin" || role.Role.Name == "Moderator")
+                {
+                    photo.IsApproved = true;
+                    break;
+                }  
+            }
+
             userFromRepo.Photos.Add(photo);
 
             if (await _repo.SaveAll())

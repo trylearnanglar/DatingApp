@@ -42,6 +42,7 @@ import { PhotoManagementComponent } from './admin/photo-management/photo-managem
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { AdminService } from './_services/admin.service';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { ImageLightboxComponent } from './members/image-lightbox/image-lightbox.component';
 
 export const config: GalleryConfig = {
 };
@@ -65,7 +66,8 @@ export const config: GalleryConfig = {
     HasRoleDirective,
     PhotoManagementComponent,
     UserManagementComponent,
-    RolesModalComponent
+    RolesModalComponent,
+    ImageLightboxComponent
   ],
   imports: [
     BrowserModule,

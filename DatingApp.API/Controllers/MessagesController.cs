@@ -139,6 +139,26 @@ namespace DatingApp.API.Controllers
             throw new Exception("Error deleting the message");
         }
 
+        [HttpPost("revoke/{id}")]
+        public async Task<IActionResult> RevokeMessage(int id, int userId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var messageFromRepo = await _repo.GetMessage(id);
+
+            if (messageFromRepo.SenderId == userId)
+            {
+                _repo.Delete(messageFromRepo);
+            } 
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception("Error deleting the message");
+        }
+
+
 
         [HttpPost("{id}/read")]
         public async Task<IActionResult> MarkMessageAsRead(int userId, int id)

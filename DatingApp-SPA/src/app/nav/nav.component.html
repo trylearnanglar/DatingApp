@@ -17,11 +17,11 @@
       </li>
     </ul>
 
-    <div *ngIf="loggedIn()" class="dropdown" ngbDropdown >
-        <span class="mr-1">
-          <img src="{{photoUrl || '../../../assets/user.png'}}" alt="">
-        </span>
+    <div *ngIf="loggedIn()" class="dropdown" ngbDropdown >  
         <a class="dropdown-toggle text-light" ngbDropdownToggle>
+          <span class="mr-1">
+            <img src="{{photoUrl || '../../../assets/user.png'}}" alt="" class="img-circle rounded-circle mr-1">
+          </span>
           Welcome {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu" ngbDropdownMenu >
